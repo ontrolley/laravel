@@ -38,22 +38,21 @@ class CustomersController extends BaseController {
 	{
 
 		$file = array('document' => Input::file('document'));
-		$validator = Validator::make($data = Input::all(), Customer::$rules);
+			if (Input::file('document')->isValid()) 
+			{
+	      $destinationPath = 'public/uploads/'; // upload path
+	      $extension = Input::file('document')->getClientOriginalExtension(); // getting image extension
+	      $fileName = rand(11111,99999).'.'.$extension; // renameing image
 
+	      // uploading file to given path
+	      Input::file('document')->move($destinationPath, $fileName);
+	    }
+		$validator = Validator::make($data = Input::all(), Customer::$rulesForStore);
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 		
-		if (Input::file('document')->isValid()) {
-      $destinationPath = 'public/uploads/'; // upload path
-      $extension = Input::file('document')->getClientOriginalExtension(); // getting image extension
-      $fileName = rand(11111,99999).'.'.$extension; // renameing image
-
-      // uploading file to given path
-      Input::file('document')->move($destinationPath, $fileName);
-    } 
-
     $data["filepath"] = ("uploads/" . $fileName);
 
     Customer::create($data);
@@ -99,7 +98,7 @@ class CustomersController extends BaseController {
 	{
 		$customer = Customer::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Customer::$rules);
+		$validator = Validator::make($data = Input::all(), Customer::$rulesForUpdate);
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
