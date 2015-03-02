@@ -73,7 +73,7 @@ class CustomersController extends BaseController {
 	{
 		$customer = Customer::findOrFail($id);
 
-		return View::make('customers.show', compact('customer'));
+		return View::make('Customers/show', compact('customer'));
 	}
 
 	/**
