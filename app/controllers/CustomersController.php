@@ -60,7 +60,7 @@ class CustomersController extends BaseController {
 
     Session::flash('message', 'Record is successfully created!'); 
 		Session::flash('alert-class', 'alert-success');
-		return Redirect::route('customers.index');
+		return Redirect::route('Customers/index');
 	}
 
 	/**
@@ -73,7 +73,7 @@ class CustomersController extends BaseController {
 	{
 		$customer = Customer::findOrFail($id);
 
-		return View::make('customers.show', compact('customer'));
+		return View::make('Customers/show', compact('customer'));
 	}
 
 	/**
@@ -85,7 +85,7 @@ class CustomersController extends BaseController {
 	public function edit($id)
 	{
 		$customer = Customer::find($id);
-		return View::make('customers.edit', compact('customer'));
+		return View::make('Customers/edit', compact('customer'));
 	}
 
 	/**
@@ -109,7 +109,7 @@ class CustomersController extends BaseController {
 		Session::flash('message', 'Record is successfully updated!'); 
 		Session::flash('alert-class', 'alert-success');
 
-		return Redirect::route('customers.index');
+		return Redirect::route('Customers/index');
 	}
 
 	/**
@@ -124,7 +124,7 @@ class CustomersController extends BaseController {
 
 		Session::flash('message', 'Record is deleted!'); 
 		Session::flash('alert-class', 'alert-success');
-		return Redirect::route('customers.index');
+		return Redirect::route('Customers/index');
 	}
 
 }

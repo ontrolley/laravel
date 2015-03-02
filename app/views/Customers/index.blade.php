@@ -19,7 +19,7 @@
         <tbody>
             @foreach( $customers as $customer )
                 <tr>
-                    <td><a href="{{ route('customers.show', $customer->id) }}">{{ "Show" }}</a></td>
+                    <td><a href="{{ route('Customers/show', $customer->id) }}">{{ "Show" }}</a></td>
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->phoneNumber }}</td>
                     <td>{{ HTML::link($customer->filepath, 'Show', [ 'id' => $customer->id ]) }}</td>
@@ -33,7 +33,7 @@
 </div>
 <div class="col-md-5">
 
-    {{ Form::model(new Customer, ['route' => ['customers.store'], 'files' => [true]]) }}
+    {{ Form::model(new Customer, ['route' => ['Customers/store'], 'files' => [true]]) }}
         @include('Customers/partials/_form', ['submit_text' => 'Add info'])
     {{ Form::close() }}
 

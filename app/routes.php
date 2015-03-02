@@ -15,6 +15,6 @@ Route::get('/', "CustomersController@index");
 
 Route::resource('customers', 'CustomersController');
 
-Route::get('customers/{id}/destroy',['as'=>'customers.delete','uses'=>'CustomersController@destroy']);
+Route::get('customers/{id}/destroy',['as'=>'Customers/delete','uses'=>'CustomersController@destroy']);
 
 
