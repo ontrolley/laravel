@@ -54,10 +54,11 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'customers_db',
-			'username'  => 'root',
-			'password'  => 'linuks76',
+			'host'      => getenv('OPENSHIFT_MYSQL_DB_HOST'),
+			'port'			=> getenv('OPENSHIFT_MYSQL_DB_PORT'),
+			'database'  => 'laravel',
+			'username'  => 'adminiBircpL',
+			'password'  => 'jCv6MkjrrXd5',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
