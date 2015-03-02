@@ -85,7 +85,7 @@ class CustomersController extends BaseController {
 	public function edit($id)
 	{
 		$customer = Customer::find($id);
-		return View::make('customers.edit', compact('customer'));
+		return View::make('Customers/edit', compact('customer'));
 	}
 
 	/**
