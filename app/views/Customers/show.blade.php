@@ -14,7 +14,7 @@
 		<br />
 		<br />
 		<br />
-		{{ HTML::linkRoute( 'Customers.delete', 'Delete' , [ 'id' => $customer->id ]) }}
+		{{ HTML::linkRoute( 'customers.delete', 'Delete' , [ 'id' => $customer->id ]) }}
 		<!-- a href="{{ URL::to('customers/' . $customer->id . '/edit') }}">Edit</a -->
 		{{ link_to_route('customers.edit', 'Edit', array($customer->id), array('class' => 'link')) }}
 	</div>
