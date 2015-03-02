@@ -4,7 +4,7 @@
 <div class="col-md-3">
 </div>
 <div class="col-md-6">		
-		{{ Form::model($customer, array('method' => 'PATCH', 'route' => array('Customers.update', $customer->id), 'files' => [true])) }}
+		{{ Form::model($customer, array('method' => 'PATCH', 'route' => array('customers.update', $customer->id), 'files' => [true])) }}
 			<div class="form-group">
 			    {{ Form::label('name', 'Name') }}
 			    {{ Form::text('name', $customer->name, array('class' => 'form-control')) }}
