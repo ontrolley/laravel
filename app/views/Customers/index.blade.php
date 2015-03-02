@@ -19,7 +19,7 @@
         <tbody>
             @foreach( $customers as $customer )
                 <tr>
-                    <td><a href="{{ route('Customers/show', $customer->id) }}">{{ "Show" }}</a></td>
+                    <td><a href="{{ route('customers.show', $customer->id) }}">{{ "Show" }}</a></td>
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->phoneNumber }}</td>
                     <td>{{ HTML::link($customer->filepath, 'Show', [ 'id' => $customer->id ]) }}</td>
