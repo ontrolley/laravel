@@ -55,10 +55,10 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => getenv('OPENSHIFT_MYSQL_DB_HOST'),
-			'port'			=> getenv('OPENSHIFT_MYSQL_DB_PORT'),
+			'port'	    => getenv('OPENSHIFT_MYSQL_DB_PORT'),
 			'database'  => 'laravel',
-			'username'  => 'adminiBircpL',
-			'password'  => 'jCv6MkjrrXd5',
+			'username'  => '',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
