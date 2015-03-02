@@ -26,7 +26,7 @@ class CustomersController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('customers.create');
+		return View::make('Customers/create');
 	}
 
 	/**

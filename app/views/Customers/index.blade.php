@@ -34,7 +34,7 @@
 <div class="col-md-5">
 
     {{ Form::model(new Customer, ['route' => ['customers.store'], 'files' => [true]]) }}
-        @include('customers/partials/_form', ['submit_text' => 'Add info'])
+        @include('Customers/partials/_form', ['submit_text' => 'Add info'])
     {{ Form::close() }}
 
 </div>
