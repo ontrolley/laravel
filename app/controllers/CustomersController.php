@@ -16,7 +16,7 @@ class CustomersController extends BaseController {
 		Session::flash('alert-class', 'alert-success');
 		}
 
-		return View::make('customers.index', compact('customers'));
+		return View@make('customers.index', compact('customers'));
 	}
 
 	/**
