@@ -23,7 +23,7 @@
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->phoneNumber }}</td>
                     <td>{{ HTML::link($customer->filepath, 'Show', [ 'id' => $customer->id ]) }}</td>
-                    <!-- td>{{ HTML::linkRoute( 'customers.delete', 'Delete' , [ 'id' => $customer->id ]) }}</td -->
+                    {{-- HTML::linkRoute( 'customers.delete', 'Delete' , [ 'id' => $customer->id ]) --}}
                 </tr>
             @endforeach
         </tbody>
