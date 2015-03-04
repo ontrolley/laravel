@@ -117,12 +117,7 @@ class CustomersController extends BaseController {
 	      $fileName = rand(11111,99999).'.'.$extension; // renameing image
 	      // uploading file to given path
 	      Input::file('document')->move($destinationPath, $fileName);
-	    }
-	    $data["filepath"] = $customer->filepath;	
-	  }
-	  else
-	  {
-	  	$data["filepath"] = ("uploads/" . $fileName);
+	    } 	
 	  }
 
 		$validator = Validator::make($data = Input::all(), Customer::$rulesForUpdate);
@@ -130,6 +125,15 @@ class CustomersController extends BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}		
+
+		if (gettype($file["document"]) == 'object')
+		{
+			$data["filepath"] = ("uploads/" . $fileName);
+		}
+		else
+		{
+			$data["filepath"] = $customer->filepath;
+		}
 		//$data["filepath"] = ("uploads/" . $fileName);
 		//$data["filepath"] = $customer->filepath;
 		$customer->update($data);
