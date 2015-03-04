@@ -134,8 +134,6 @@ class CustomersController extends BaseController {
 		{
 			$data["filepath"] = $customer->filepath;
 		}
-		//$data["filepath"] = ("uploads/" . $fileName);
-		//$data["filepath"] = $customer->filepath;
 		$customer->update($data);
 
 		Session::flash('message', 'Record is successfully updated!'); 
