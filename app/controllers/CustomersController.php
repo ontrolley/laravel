@@ -125,7 +125,8 @@ class CustomersController extends BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}		
-		$data["filepath"] = ("uploads/" . $fileName);
+		//$data["filepath"] = ("uploads/" . $fileName);
+		$data["filepath"] = $customer->filepath;
 		$customer->update($data);
 
 		Session::flash('message', 'Record is successfully updated!'); 
