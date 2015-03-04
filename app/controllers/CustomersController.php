@@ -112,7 +112,7 @@ class CustomersController extends BaseController {
 		{
 			if (Input::file('document')->isValid()) 
 			{
-	      $destinationPath = 'public/uploads/';//'uploads/'; // upload path
+	      $destinationPath = 'uploads/';//'uploads/'; // upload path
 	      $extension = Input::file('document')->getClientOriginalExtension(); // getting image extension
 	      $fileName = rand(11111,99999).'.'.$extension; // renameing image
 	      // uploading file to given path
