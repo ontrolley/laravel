@@ -110,6 +110,7 @@ class CustomersController extends BaseController {
 		$file = array('document' => Input::file('document'));
 		if (gettype($file["document"]) == 'object')
 		{
+			$data["filepath"] = ("uploads/" . $fileName);
 			if (Input::file('document')->isValid()) 
 			{
 	      $destinationPath = 'uploads/';//'uploads/'; // upload path
@@ -119,6 +120,10 @@ class CustomersController extends BaseController {
 	      Input::file('document')->move($destinationPath, $fileName);
 	    }
 	  }
+	  else
+	  {
+	  	$data["filepath"] = $customer->filepath;	
+	  }
 
 		$validator = Validator::make($data = Input::all(), Customer::$rulesForUpdate);
 		if ($validator->fails())
@@ -126,7 +131,7 @@ class CustomersController extends BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}		
 		//$data["filepath"] = ("uploads/" . $fileName);
-		$data["filepath"] = $customer->filepath;
+		//$data["filepath"] = $customer->filepath;
 		$customer->update($data);
 
 		Session::flash('message', 'Record is successfully updated!'); 
