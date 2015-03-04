@@ -118,11 +118,11 @@ class CustomersController extends BaseController {
 	      // uploading file to given path
 	      Input::file('document')->move($destinationPath, $fileName);
 	    }
-	    $data["filepath"] = ("uploads/" . $fileName);
+	    $data["filepath"] = $customer->filepath;	
 	  }
 	  else
 	  {
-	  	$data["filepath"] = $customer->filepath;	
+	  	$data["filepath"] = ("uploads/" . $fileName);
 	  }
 
 		$validator = Validator::make($data = Input::all(), Customer::$rulesForUpdate);
