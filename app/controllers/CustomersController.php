@@ -52,7 +52,6 @@ class CustomersController extends BaseController {
 	  {
 	  	$fileName = "defaultImage.bmp";
 	  }
-
 		$validator = Validator::make($data = Input::all(), Customer::$rulesForStore);
 		if ($validator->fails())
 		{
@@ -151,5 +150,6 @@ class CustomersController extends BaseController {
 	}
 
 }
+
 //print_r(gettype($file["document"]));
-		//exit;
+//exit;
