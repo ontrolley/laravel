@@ -110,7 +110,6 @@ class CustomersController extends BaseController {
 		$file = array('document' => Input::file('document'));
 		if (gettype($file["document"]) == 'object')
 		{
-			$data["filepath"] = ("uploads/" . $fileName);
 			if (Input::file('document')->isValid()) 
 			{
 	      $destinationPath = 'uploads/';//'uploads/'; // upload path
@@ -119,6 +118,7 @@ class CustomersController extends BaseController {
 	      // uploading file to given path
 	      Input::file('document')->move($destinationPath, $fileName);
 	    }
+	    $data["filepath"] = ("uploads/" . $fileName);
 	  }
 	  else
 	  {
