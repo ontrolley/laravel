@@ -7,7 +7,7 @@ class Customer extends Eloquent {
 		// 'title' => 'required'
 		'name' => 'required',
 		'email' => 'required|email|unique:customers',
-		'phoneNumber' => 'required',
+		'phoneNumber' => 'required|regex:/^\+?[0-9]{3}-?[0-9]{6,12}$/',
 		'comments' => 'required'
 	];
 

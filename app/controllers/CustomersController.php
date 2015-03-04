@@ -36,17 +36,23 @@ class CustomersController extends BaseController {
 	 */
 	public function store()
 	{
-
 		$file = array('document' => Input::file('document'));
+		if (gettype($file["document"]) == 'object')
+		{
 			if (Input::file('document')->isValid()) 
 			{
 	      $destinationPath = 'uploads/'; // upload path
 	      $extension = Input::file('document')->getClientOriginalExtension(); // getting image extension
 	      $fileName = rand(11111,99999).'.'.$extension; // renameing image
-
 	      // uploading file to given path
 	      Input::file('document')->move($destinationPath, $fileName);
 	    }
+	  }
+	  else
+	  {
+	  	$fileName = "defaultImage.bmp";
+	  }
+
 		$validator = Validator::make($data = Input::all(), Customer::$rulesForStore);
 		if ($validator->fails())
 		{
@@ -57,8 +63,13 @@ class CustomersController extends BaseController {
 
     Customer::create($data);
 
+    if ($data["filepath"] == "uploads/defaultImage.bmp") { 
+    		$message = 'Record is successfully created! Default image will be used as your uploaded file.';
+    } else {
+    	$message = 'Record is successfully created!';
+    }
 
-    Session::flash('message', 'Record is successfully created!'); 
+    Session::flash('message', $message );
 		Session::flash('alert-class', 'alert-success');
 		return Redirect::route('customers.index');
 	}
@@ -97,13 +108,25 @@ class CustomersController extends BaseController {
 	public function update($id)
 	{
 		$customer = Customer::findOrFail($id);
+		$file = array('document' => Input::file('document'));
+		if (gettype($file["document"]) == 'object')
+		{
+			if (Input::file('document')->isValid()) 
+			{
+	      $destinationPath = 'public/uploads/';//'uploads/'; // upload path
+	      $extension = Input::file('document')->getClientOriginalExtension(); // getting image extension
+	      $fileName = rand(11111,99999).'.'.$extension; // renameing image
+	      // uploading file to given path
+	      Input::file('document')->move($destinationPath, $fileName);
+	    }
+	  }
 
 		$validator = Validator::make($data = Input::all(), Customer::$rulesForUpdate);
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}		
-    
+		$data["filepath"] = ("uploads/" . $fileName);
 		$customer->update($data);
 
 		Session::flash('message', 'Record is successfully updated!'); 
@@ -128,3 +151,5 @@ class CustomersController extends BaseController {
 	}
 
 }
+//print_r(gettype($file["document"]));
+		//exit;
