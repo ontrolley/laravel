@@ -12,13 +12,13 @@ class AddSomeFieldsToCustomers extends Migration {
 	 */
 	public function up()
 	{
-		//
-		Schema::table('customers', function(Blueprint $table)
-    {
-        $table->string('password', 64);
-        $table->string('lastname', 100);
-        $table->strint('remember_token', 100);
-    });
+
+	    Schema::table('customers', function($table)
+			{
+				  $table->string('password', 64);
+	        $table->string('lastname', 100);
+	        $table->strint('remember_token', 100);
+			});
 	}
 
 	/**
@@ -28,10 +28,12 @@ class AddSomeFieldsToCustomers extends Migration {
 	 */
 	public function down()
 	{
-		//
-		$table->dropColumn('password', 64);
-		$table->dropColumn('lastname', 100);
-		$table->dropColumn('remember_token', 100);
+			Schema::table('customers', function($table)
+	    {
+	    		$table->dropColumn('password', 64);
+					$table->dropColumn('lastname', 100);
+					$table->dropColumn('remember_token', 100);
+	    });
 	}
 
 }
