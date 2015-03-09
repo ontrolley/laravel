@@ -49,10 +49,11 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
-
+/*
 	Session::flash('message', $code . ':Something goes wrong.');
 	Session::flash('alert-class', 'alert-danger');
 	return Redirect::route('customers.index');
+*/
 });
 
 /*
