@@ -28,6 +28,14 @@
 			<div class="form-group">
 			    {{ Form::file('document') }}
 			</div>
+
+			<div class="form-group">
+    			{{ Form::password('password', array('class' => 'form-control', 'placeholder' => "Password")) }}
+			</div>
+ 
+			<div class="form-group">
+    			{{ Form::password('password_confirmation', array('class' => 'form-control', 'placeholder' => "Confirm password")) }}
+			</div>
 			 
 			<div class="form-group">
 			    {{ Form::submit(('Edit info'), array('class' => "btn btn-primary")) }}

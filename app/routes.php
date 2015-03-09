@@ -11,10 +11,14 @@
 |
 */
 
+Route::resource('customers', 'CustomersController');
+
 Route::get('/', "CustomersController@index");
 
-Route::resource('customers', 'CustomersController');
+Route::post('login', "CustomersController@postLogin");
+
+Route::get('login', array('as' => 'login', function () { }))->before('guest');
 
 Route::get('customers/{id}/destroy',['as'=>'Customers/delete','uses'=>'CustomersController@destroy']);
 
-
+Route::get('logout', array('uses' => 'CustomersController@logout'));

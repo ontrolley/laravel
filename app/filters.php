@@ -43,7 +43,9 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			Session::flash('message', 'You must be logged in!'); 
+			Session::flash('alert-class', 'alert-danger');
+			return Redirect::to('/');
 		}
 	}
 });
@@ -67,7 +69,9 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+    if (Auth::check()) 
+        return Redirect::route('customers.show')
+            ->with('flash_notice', 'You are already logged in!');
 });
 
 /*
